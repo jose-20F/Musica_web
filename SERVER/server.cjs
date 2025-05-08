@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 
 const dbConfig = {
     user: "sa",
+    
     password: "123",
     server: "JOSEFIGUERO",
     database: "Musica",
@@ -24,11 +25,11 @@ const dbConfig = {
 const poolPromise = new sql.ConnectionPool(dbConfig)
     .connect()
     .then(pool => {
-        console.log("✅ Conexión a la base de datos establecida");
+        console.log("Conexión a la base de datos establecida");
         return pool;
     })
     .catch(err => {
-        console.error("❌ Error al conectar a la base de datos:", err);
+        console.error("Error al conectar a la base de datos:", err);
     });
 
 app.post("/api/usuarios", async (req, res) => {
@@ -48,13 +49,13 @@ app.post("/api/usuarios", async (req, res) => {
             .input("Mensaje", sql.VarChar(80), mensaje.trim())
             .query("INSERT INTO dbo.Usuario (Nombre, Apellido, Telefono, CorreoElectronico, Mensaje) VALUES (@Nombre, @Apellido, @Telefono, @CorreoElectronico, @Mensaje)");
 
-        res.json({ message: "✅ Usuario agregado correctamente" });
+        res.json({ message: " Usuario agregado correctamente" });
     } catch (error) {
-        console.error("❌ Error al insertar datos:", error);
+        console.error(" Error al insertar datos:", error);
         res.status(500).json({ error: "Error interno al agregar usuario", detalle: error.message });
     }
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
