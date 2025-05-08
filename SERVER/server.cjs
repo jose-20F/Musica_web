@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 
 const dbConfig = {
     user: "sa",
-    
     password: "123",
     server: "JOSEFIGUERO",
     database: "Musica",
