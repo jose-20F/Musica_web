@@ -27,9 +27,7 @@ function Home() {
       <section className="content about">
         <h2 className="title">Nosotros</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt eos libero
-          sapiente, quasi totam, molestias autem nesciunt, excepturi nam veniam
-          nostrum at obcaecati ex architecto veritatis et molestiae provident expedita!
+          Opción MG es un grupo musical versátil que ofrece una amplia gama de generos musicales 
         </p>
 
         <div className="box-container">
