@@ -1,3 +1,4 @@
+
 /* src/CSS/estilo.css */
 * {
   margin: 0;
@@ -9,6 +10,7 @@ body {
   background-color: #272727;
   color: #ecdfcc;
   font-family: sans-serif;
+  
   line-height: 1.6;
 }
 
