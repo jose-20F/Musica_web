@@ -922,3 +922,219 @@ body {
   }
 }
 
+/* Estilos para pagina musica */
+
+/* Contenedor principal de la página de música */
+.musica-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #272727;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Encabezado de la página de música */
+.musica-header {
+  text-align: center;
+  padding: 1rem;
+  background-color: #272727;
+}
+
+/* Carrusel de canciones */
+.song-carousel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+  background-color: #272727;
+}
+
+/* Botones del carrusel */
+.carousel-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+.carousel-btn.left {
+  left: 10px;
+}
+.carousel-btn.right {
+  right: 10px;
+}
+.carousel-btn:hover {
+  background-color: rgba(87, 98, 86, 0.7);
+}
+
+/* Grid de canciones (efecto 3D) */
+.song-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  padding: 1rem;
+  background-color: #272727;
+}
+
+/* Tarjeta de canción */
+.song-card {
+  position: absolute;
+  background-color: #0d0707;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.5s ease, background-color 0.3s ease, z-index 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transform-origin: center;
+}
+.song-card.active {
+  transform: translateZ(200px);
+  z-index: 10;
+  background-color: #576256;
+}
+.song-card.left {
+  transform: translateX(-150px) rotateY(15deg);
+  z-index: 5;
+}
+.song-card.right {
+  transform: translateX(150px) rotateY(-15deg);
+  z-index: 5;
+}
+.song-card.actual {
+  box-shadow: 0 0 15px #00ffcc;
+  border: 2px solid #00ffcc;
+}
+.song-card.active:hover {
+  transform: scale(1.1);
+}
+
+/* Reproductor fijo en la parte inferior */
+.reproductor-fijo {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #1d1d1d;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.90;
+}
+
+/* Barra de progreso de la canción */
+.barra-progreso {
+  width: 100%;
+  height: 6px;
+  background-color: #444;
+  appearance: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.barra-progreso::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  cursor: pointer;
+}
+.barra-progreso::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  cursor: pointer;
+}
+
+/* Controles del reproductor */
+.controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.controles button {
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 1.5rem;
+  border: none;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+.controles button:hover {
+  color: #00ffcc;
+}
+
+/* Información de la canción */
+.song-info {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Imagen de la canción */
+.song-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+/* Control de volumen */
+.volumen-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.barra-volumen {
+  width: 100px;
+  height: 6px;
+  background: #444;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+.barra-volumen::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  border: none;
+  margin-top: -3px;
+}
+.barra-volumen::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  border: none;
+}
+
+/* Final de estilos para pages de musica */
+
