@@ -21,12 +21,39 @@ function Contacto() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validaciones
+    const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+    const soloNumeros = /^[0-9]+$/;
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!soloLetras.test(formData.nombre)) {
+      alert('El nombre solo debe contener letras.');
+      return;
+    }
+    if (!soloLetras.test(formData.apellido)) {
+      alert('El apellido solo debe contener letras.');
+      return;
+    }
+    if (!emailValido.test(formData.email)) {
+      alert('El correo electrónico no es válido.');
+      return;
+    }
+    if (formData.telefono && !soloNumeros.test(formData.telefono)) {
+      alert('El teléfono solo debe contener números.');
+      return;
+    }
+    if (formData.telefono && formData.telefono.length !== 10) {
+      alert('El teléfono debe tener exactamente 10 números.');
+      return;
+    }
+
     try {
-     const response = await fetch('http://localhost:3000/api/usuarios', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-});
+      const response = await fetch('http://localhost:3000/api/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
       const data = await response.json();
       if (response.ok) {

@@ -1,27 +1,14 @@
 // src/pages/Home.jsx
 import '../CSS/estilo.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Layout from '../COMPONENTS/Layout';
 
 function Home() {
   return (
-    <div className="page-container">
-      <header className="head">
-        <div className="logo">
-          <a href="/">
-            <img src="/IMG/logo.jpg" alt="Logo Opción MG" />
-          </a>
-        </div>
-        <nav className="navbar">
-          <a href="/">Inicio</a>
-          <a href="/musica">Música</a>
-          <a href="/nosotros">Nuestro Grupo</a>
-          <a href="/galeria">Galería</a>
-          <a href="/contacto">Contacto</a>
-        </nav>
-      </header>
-
+    <Layout>
       <main className="content header">
-        <img src="/IMG/logo.jpg" alt="Logo Opción MG" className="responsive-logo" />
+        {/* Elimina este logo, ya está en el Layout */}
+        {/* <img src="/IMG/logo.jpg" alt="Logo Opción MG" className="responsive-logo" /> */}
       </main>
 
       <section className="content about">
@@ -59,7 +46,8 @@ function Home() {
         </div>
       </section>
 
-      <footer className="footer">
+      {/* Elimina este footer, ya está en el Layout */}
+      {/* <footer className="footer">
         <hr className="divider" />
         <p>Síguenos en:</p>
         <div className="social-links">
@@ -68,8 +56,8 @@ function Home() {
           <a href="#"><i className="bi bi-instagram"></i></a>
           <a href="#"><i className="bi bi-youtube"></i></a>
         </div>
-      </footer>
-    </div>
+      </footer> */}
+    </Layout>
   );
 }
 
