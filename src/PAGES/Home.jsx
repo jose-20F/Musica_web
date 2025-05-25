@@ -17,6 +17,7 @@ function Home() {
           <a href="/nosotros">Nuestro Grupo</a>
           <a href="/galeria">Galería</a>
           <a href="/contacto">Contacto</a>
+          <a href="/agenda">Agenda</a>
         </nav>
       </header>
 

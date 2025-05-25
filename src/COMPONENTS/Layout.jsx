@@ -18,6 +18,7 @@ function Layout({ children }) {
           <Link to="/nosotros">Nuestro Grupo</Link>
           <Link to="/galeria">Galería</Link>
           <Link to="/contacto">Contacto</Link>
+          <Link to="/agenda">Agenda</Link>
         </nav>
       </header>
 

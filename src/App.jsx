@@ -5,6 +5,8 @@ import Contacto from './PAGES/contacto';
 import Galeria from './PAGES/galeria';
 import Musica from './PAGES/musica';
 import Nosotros from './PAGES/nosotros';
+import Agenda from './PAGES/agenda'; // <-- Cambia aquí la importación
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path="/galeria" element={<Galeria />} />
         <Route path="/musica" element={<Musica />} />
         <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/agenda" element={<Agenda />} /> {/* Esto ya está bien */}
       </Routes>
     </BrowserRouter>
   );
