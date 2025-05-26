@@ -1,70 +1,92 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../CSS/login.css";
+import "../CSS/estilo.css";
 
+/**
+ * Página de login para administradores.
+ * Permite ingresar con correo y contraseña, valida contra el backend y guarda el token JWT en localStorage.
+ */
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [mensaje, setMensaje] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // Estados para los campos del formulario y mensajes de feedback
+  const [email, setEmail] = useState("");         // Email del usuario
+  const [password, setPassword] = useState("");   // Contraseña del usuario
+  const [mensaje, setMensaje] = useState("");     // Mensaje de error o éxito
+  const [loading, setLoading] = useState(false);  // Estado de carga para el botón
+  const navigate = useNavigate();                 // Hook para redireccionar
 
+  /**
+   * Maneja el envío del formulario de login.
+   * Realiza una petición POST al backend para autenticar al usuario.
+   * Si es exitoso, guarda el token y el rol en localStorage y redirige al panel de admin.
+   * Si falla, muestra un mensaje de error.
+   */
   const handleLogin = async (e) => {
     e.preventDefault();
-    setMensaje("");
     setLoading(true);
+    setMensaje("");
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
+      // Realiza la petición al endpoint de login del backend
+      const res = await fetch("http://localhost:3000/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      if (res.ok && data.rol === "admin") {
+      // Si la autenticación es exitosa y el usuario es admin
+      if (res.ok && data.token && data.rol === "admin") {
+        // Guarda el token y el rol en localStorage para futuras peticiones protegidas
         localStorage.setItem("token", data.token);
         localStorage.setItem("rol", data.rol);
-        setMensaje("Login exitoso");
-        setTimeout(() => navigate("/eventos-admin"), 800); // Redirige tras login
+        // Redirige al panel de administración
+        navigate("/homeadmin");
       } else {
-        setMensaje(data.error || "Error al iniciar sesión");
+        // Muestra mensaje de error si las credenciales son incorrectas
+        setMensaje(data.error || "Credenciales incorrectas");
       }
-    } catch (err) {
-      setMensaje("Error de conexión con el servidor");
+    } catch (error) {
+      // Muestra mensaje de error si hay un problema de conexión
+      setMensaje("Error de conexión");
     }
     setLoading(false);
   };
 
   return (
-    <div className="login-container">
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
+    <div className="login-bg">
+      <div className="login-container admin-login">
+        {/* Logo del sistema */}
+        <div className="login-logo">
+          <img src="/IMG/logo.jpg" alt="Logo Opción MG" />
+        </div>
+        <h2>Panel de Administración</h2>
+        {/* Formulario de login */}
+        <form onSubmit={handleLogin}>
+          <label>Correo electrónico</label>
           <input
             type="email"
             value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
-            onChange={e => setEmail(e.target.value)}
+            autoFocus
           />
-        </div>
-        <div>
-          <label>Contraseña:</label>
+          <label>Contraseña</label>
           <input
             type="password"
             value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
-            onChange={e => setPassword(e.target.value)}
           />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Ingresando..." : "Ingresar"}
-        </button>
-      </form>
-      {mensaje && (
-        <div className={`mensaje ${mensaje === "Login exitoso" ? "success" : "error"}`}>
-          {mensaje}
-        </div>
-      )}
+          <button type="submit" disabled={loading}>
+            {loading ? "Ingresando..." : "Ingresar"}
+          </button>
+        </form>
+        {/* Mensaje de error o éxito */}
+        {mensaje && (
+          <div className={`mensaje ${mensaje.includes("exitoso") ? "success" : "error"}`}>
+            {mensaje}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

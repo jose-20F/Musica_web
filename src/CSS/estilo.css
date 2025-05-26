@@ -414,3 +414,727 @@ body {
 .login-container .mensaje.error {
   color: #ff6b6b;
 }
+
+/* Estilos para tarjetas de eventos */
+.agenda-card {
+  background: #1f1f1f;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+.agenda-card:hover {
+  transform: scale(1.03);
+  background: #272727;
+}
+.agenda-fecha {
+  font-size: 1.1rem;
+  color: #00ffcc;
+  font-weight: bold;
+}
+.agenda-titulo {
+  font-size: 1.3rem;
+  color: #ecdfcc;
+  font-weight: bold;
+  margin-top: 0.3rem;
+}
+.agenda-lugar {
+  font-size: 1.1rem;
+  color: #bdbdbd;
+  margin-top: 0.2rem;
+}
+.agenda-tipo {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.2rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
+  display: inline-block;
+}
+.agenda-tipo.publico {
+  background: #00ffcc22;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+}
+.agenda-tipo.privado {
+  background: #ff4d4d22;
+  color: #ff4d4d;
+  border: 1px solid #ff4d4d;
+}
+
+/* =========================
+   ESTILOS CALENDARIO (react-calendar)
+   ========================= */
+
+/* Contenedor principal del calendario */
+.react-calendar {
+  background: #232323;
+  border-radius: 1.2rem;
+  border: none;
+  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+  color: #ecdfcc;
+  padding: 1.5rem 1rem;
+  font-family: inherit;
+  margin-bottom: 2rem;
+}
+
+/* Navegación del calendario (flechas y mes/año) */
+.react-calendar__navigation {
+  background: transparent;
+  margin-bottom: 1rem;
+}
+.react-calendar__navigation button {
+  background: #232323;
+  color: #00ffcc;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.react-calendar__navigation button:enabled:hover {
+  background: #00ffcc;
+  color: #232323;
+}
+
+/* Días de la semana */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #00ffcc;
+  background: transparent;
+}
+
+/* Estilo general de los días */
+.react-calendar__tile {
+  background: transparent;
+  color: #ecdfcc;
+  border-radius: 0.7rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Día actual */
+.react-calendar__tile--now {
+  background: #576256;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Día seleccionado */
+.react-calendar__tile--active {
+  background: #00ffcc;
+  color: #232323;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ffcc88;
+}
+
+/* Hover/focus en días */
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #697565;
+  color: #fff;
+}
+
+/* Día con evento general (puedes usarlo para eventos sin tipo) */
+.agenda-fecha-evento {
+  background: linear-gradient(135deg, #00ffcc 60%, #576256 100%) !important;
+  color: #232323 !important;
+  border-radius: 50% !important;
+  font-weight: bold;
+  box-shadow: 0 0 12px #00ffcc88;
+  border: 2px solid #00ffcc;
+  position: relative;
+  z-index: 2;
+  animation: eventoPulse 1.2s infinite alternate;
+}
+
+/* Animación para días con evento público */
+@keyframes eventoPulse {
+  0% { box-shadow: 0 0 12px #00ffcc88; }
+  100% { box-shadow: 0 0 24px #00ffcccc; }
+}
+
+/* Forzar fondo oscuro y texto claro en todos los elementos del calendario */
+.react-calendar,
+.react-calendar__viewContainer,
+.react-calendar__month-view,
+.react-calendar__month-view__days,
+.react-calendar__month-view__weekdays,
+.react-calendar__navigation {
+  background: #232323 !important;
+  color: #ecdfcc !important;
+  border-radius: 1.2rem !important;
+  border: none !important;
+}
+.react-calendar__tile {
+  background: transparent !important;
+  color: #ecdfcc !important;
+}
+.react-calendar__month-view__weekdays__weekday {
+  color: #00ffcc !important;
+}
+.react-calendar__navigation button {
+  background: #232323 !important;
+  color: #00ffcc !important;
+}
+.react-calendar__navigation button:enabled:hover {
+  background: #00ffcc !important;
+  color: #232323 !important;
+}
+.react-calendar__tile--now {
+  background: #576256 !important;
+  color: #fff !important;
+}
+.react-calendar__tile--active {
+  background: #00ffcc !important;
+  color: #232323 !important;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #697565 !important;
+  color: #fff !important;
+}
+
+/* =========================
+   LEYENDA DE EVENTOS
+   ========================= */
+.agenda-leyenda {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.05rem;
+}
+.leyenda-circulo {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+.leyenda-circulo.publico {
+  background: linear-gradient(135deg, #00ffcc 60%, #00ff88 100%);
+  box-shadow: 0 0 8px #00ffcc88;
+  border: 2px solid #00ffcc;
+}
+.leyenda-circulo.privado {
+  background: linear-gradient(135deg, #ff4dff 60%, #ff4d4d 100%);
+  box-shadow: 0 0 8px #ff4dff88;
+  border: 2px solid #ff4dff;
+}
+
+/* =========================
+   DÍAS CON EVENTO PÚBLICO
+   ========================= */
+.react-calendar__month-view__days__day.evento-publico,
+.react-calendar .react-calendar__tile.evento-publico {
+  background: linear-gradient(135deg, #00ffcc 60%, #00ff88 100%) !important;
+  color: #232323 !important;
+  border-radius: 50% !important;
+  font-weight: bold !important;
+  box-shadow: 0 0 18px #00ffccbb !important;
+  border: 2px solid #00ffcc !important;
+  position: relative;
+  z-index: 2;
+  animation: eventoPulse 1.2s infinite alternate;
+}
+
+/* =========================
+   DÍAS CON EVENTO PRIVADO
+   ========================= */
+.react-calendar__month-view__days__day.evento-privado,
+.react-calendar .react-calendar__tile.evento-privado {
+  background: linear-gradient(135deg, #ff4dff 60%, #ff4d4d 100%) !important;
+  color: #232323 !important;
+  border-radius: 50% !important;
+  font-weight: bold !important;
+  box-shadow: 0 0 18px #ff4dffbb !important;
+  border: 2px solid #ff4dff !important;
+  position: relative;
+  z-index: 2;
+  animation: eventoPulsePrivado 1.2s infinite alternate;
+}
+
+/* Animación para días con evento privado */
+@keyframes eventoPulsePrivado {
+  0% { box-shadow: 0 0 18px #ff4dff88; }
+  100% { box-shadow: 0 0 32px #ff4dffcc; }
+}
+
+/* =========================
+   FIN ESTILOS CALENDARIO
+   ========================= */
+
+/* =========================
+   ESTILOS PANEL ADMIN EVENTOS
+   ========================= */
+.page-container {
+  max-width: 700px;
+  margin: 32px auto 0 auto;
+  padding: 18px 10px 18px 10px;
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px #000a;
+  color: #ecdfcc;
+}
+
+.page-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+  color: #f7c873;
+  font-weight: 700;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.mensaje {
+  background: #232323;
+  color: #f7c873;
+  border-left: 4px solid #f7c873;
+  padding: 7px 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-agenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+  background: #181818;
+  padding: 10px 10px 6px 10px;
+  border-radius: 7px;
+  box-shadow: 0 1px 6px #0006;
+}
+
+.form-agenda label {
+  flex-basis: 100%;
+  font-size: 0.97rem;
+  color: #f7c873;
+  margin-bottom: 1px;
+  font-weight: 500;
+}
+
+.form-agenda input,
+.form-agenda textarea,
+.form-agenda select {
+  background: #232323;
+  color: #ecdfcc;
+  border: 1px solid #f7c873;
+  border-radius: 4px;
+  padding: 5px 7px;
+  font-size: 0.97rem;
+  outline: none;
+  margin-bottom: 5px;
+  width: 150px;
+  font-family: inherit;
+}
+
+.form-agenda textarea {
+  min-width: 150px;
+  max-width: 220px;
+  min-height: 28px;
+  max-height: 60px;
+  resize: vertical;
+}
+
+.form-agenda input:focus,
+.form-agenda textarea:focus,
+.form-agenda select:focus {
+  border-color: #ffd700;
+}
+
+.form-agenda button {
+  background: linear-gradient(90deg, #f7c873 60%, #ffd700 100%);
+  color: #232323;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 4px #0004;
+}
+
+.form-agenda button[type="button"] {
+  background: #232323;
+  color: #f7c873;
+  border: 1px solid #f7c873;
+}
+
+.form-agenda button:hover {
+  background: #ffd700;
+  color: #232323;
+}
+
+.tabla-eventos {
+  width: 100%;
+  border-collapse: collapse;
+  background: #181818;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px #0006;
+  font-size: 0.97rem;
+}
+
+.tabla-eventos th,
+.tabla-eventos td {
+  padding: 7px 6px;
+  text-align: left;
+}
+
+.tabla-eventos th {
+  background: #232323;
+  color: #f7c873;
+  font-weight: 600;
+  font-size: 0.97rem;
+  border-bottom: 1.5px solid #f7c873;
+}
+
+.tabla-eventos td {
+  border-bottom: 1px solid #333;
+  color: #ecdfcc;
+}
+
+.tabla-eventos tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-eventos button {
+  background: #f7c873;
+  color: #232323;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin-right: 3px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tabla-eventos button:hover {
+  background: #ffd700;
+  color: #232323;
+}
+
+@media (max-width: 600px) {
+  .page-container {
+    padding: 6px 1vw;
+    max-width: 99vw;
+  }
+  .form-agenda {
+    flex-direction: column;
+    gap: 6px 0;
+  }
+  .form-agenda input,
+  .form-agenda textarea,
+  .form-agenda select {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .tabla-eventos th,
+  .tabla-eventos td {
+    font-size: 0.93rem;
+    padding: 5px 2px;
+  }
+  .head {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
+  .logo img {
+    width: 70px;
+  }
+}
+
+/* Menu toggle para mobile */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  z-index: 1100;
+}
+.menu-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+.menu-icon:before,
+.menu-icon:after,
+.menu-icon {
+  content: '';
+  display: block;
+  background: #ecdfcc;
+  height: 3px;
+  width: 28px;
+  border-radius: 2px;
+  position: absolute;
+  left: 2px;
+}
+.menu-icon {
+  top: 14px;
+}
+.menu-icon:before {
+  top: 6px;
+}
+.menu-icon:after {
+  top: 22px;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background: #232323;
+    position: absolute;
+    top: 63px;
+    right: 0;
+    width: 180px;
+    box-shadow: 0 4px 16px #000a;
+    z-index: 1001;
+    padding: 1rem 0;
+  }
+  .navbar.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Estilos para pagina musica */
+
+/* Contenedor principal de la página de música */
+.musica-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #272727;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Encabezado de la página de música */
+.musica-header {
+  text-align: center;
+  padding: 1rem;
+  background-color: #272727;
+}
+
+/* Carrusel de canciones */
+.song-carousel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+  background-color: #272727;
+}
+
+/* Botones del carrusel */
+.carousel-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+.carousel-btn.left {
+  left: 10px;
+}
+.carousel-btn.right {
+  right: 10px;
+}
+.carousel-btn:hover {
+  background-color: rgba(87, 98, 86, 0.7);
+}
+
+/* Grid de canciones (efecto 3D) */
+.song-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  padding: 1rem;
+  background-color: #272727;
+}
+
+/* Tarjeta de canción */
+.song-card {
+  position: absolute;
+  background-color: #0d0707;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.5s ease, background-color 0.3s ease, z-index 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transform-origin: center;
+}
+.song-card.active {
+  transform: translateZ(200px);
+  z-index: 10;
+  background-color: #576256;
+}
+.song-card.left {
+  transform: translateX(-150px) rotateY(15deg);
+  z-index: 5;
+}
+.song-card.right {
+  transform: translateX(150px) rotateY(-15deg);
+  z-index: 5;
+}
+.song-card.actual {
+  box-shadow: 0 0 15px #00ffcc;
+  border: 2px solid #00ffcc;
+}
+.song-card.active:hover {
+  transform: scale(1.1);
+}
+
+/* Reproductor fijo en la parte inferior */
+.reproductor-fijo {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #1d1d1d;
+  padding: 0.08rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.90;
+}
+
+/* Barra de progreso de la canción */
+.barra-progreso {
+  width: 100%;
+  height: 6px;
+  background-color: #444;
+  appearance: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.barra-progreso::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  cursor: pointer;
+}
+.barra-progreso::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  cursor: pointer;
+}
+
+/* Controles del reproductor */
+.controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.controles button {
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 1.5rem;
+  border: none;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+.controles button:hover {
+  color: #00ffcc;
+}
+
+/* Información de la canción */
+.song-info {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Imagen de la canción */
+.song-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+/* Control de volumen */
+.volumen-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.barra-volumen {
+  width: 100px;
+  height: 6px;
+  background: #444;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+.barra-volumen::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  border: none;
+  margin-top: -3px;
+}
+.barra-volumen::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #00ffcc;
+  border: none;
+}
+
+/* Final de estilos para pages de musica */
+
