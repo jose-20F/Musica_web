@@ -5,7 +5,7 @@ import Layout from '../COMPONENTS/Layout';
 
 function Home() {
   return (
-    <Layout>
+    <>
       <main className="content header">
         {/* Elimina este logo, ya está en el Layout */}
         {/* <img src="/IMG/logo.jpg" alt="Logo Opción MG" className="responsive-logo" /> */}
@@ -45,19 +45,7 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Elimina este footer, ya está en el Layout */}
-      {/* <footer className="footer">
-        <hr className="divider" />
-        <p>Síguenos en:</p>
-        <div className="social-links">
-          <a href="#"><i className="bi bi-facebook"></i></a>
-          <a href="#"><i className="bi bi-twitter-x"></i></a>
-          <a href="#"><i className="bi bi-instagram"></i></a>
-          <a href="#"><i className="bi bi-youtube"></i></a>
-        </div>
-      </footer> */}
-    </Layout>
+    </>
   );
 }
 
