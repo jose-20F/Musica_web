@@ -679,9 +679,9 @@ body {
 
 /* ===== Texto grupo y decoraciones ===== */
 .grupo-title {
-  font-size: 3.5rem; /* igual que los demás títulos */
+  font-size: 3.5rem; 
   margin-top: 0rem;
-  margin-bottom: 1rem; /* puedes ajustar según diseño */
+  margin-bottom: 1rem; 
   color: #ecdfcc;
   font-weight: bold;
   text-transform: uppercase;
